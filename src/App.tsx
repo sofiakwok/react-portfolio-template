@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import {
   Main,
   Project,
-  Contact,
   Navigation,
 } from "./components";
 import FadeIn from './components/FadeIn';
