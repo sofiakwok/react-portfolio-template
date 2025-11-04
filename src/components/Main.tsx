@@ -1,6 +1,7 @@
 import React from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import MailIcon from '@mui/icons-material/Mail';
 import profile_pic from '../assets/images/IMG_1906_2.png';
 
 import '../assets/styles/Main.scss';
@@ -18,6 +19,7 @@ function Main() {
           <div className="social_icons">
             <a href="https://github.com/sofiakwok" target="_blank" rel="noreferrer"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/sofiakwok/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <a href="mailto:sofiakwok8@gmail.com" target="_blank" rel="noreferrer"><MailIcon/></a>
           </div>
           <h1>Sofia Kwok</h1>
           <p>Hello! I am an engineer interested in space, robots, and space robots. 
@@ -28,6 +30,7 @@ function Main() {
           <div className="mobile_social_icons">
             <a href="https://github.com/sofiakwok" target="_blank" rel="noreferrer"><GitHubIcon/></a>
             <a href="https://www.linkedin.com/in/sofiakwok/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <a href="mailto:sofiakwok8@gmail.com" target="_blank" rel="noreferrer"><MailIcon/></a>
           </div>
         </div>
       </div>
