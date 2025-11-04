@@ -1,30 +1,39 @@
-import React from "react";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import profile_pic from '../assets/images/IMG_1906_2.png';
+import { useCallback, useId, useState } from 'react';
+// import { useResizeObserver } from '@wojtekmaj/react-hooks';
+import { pdfjs, Document, Page } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
 
-import '../assets/styles/Main.scss';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
+
+const options = {
+  cMapUrl: '/cmaps/',
+  standardFontDataUrl: '/standard_fonts/',
+  wasmUrl: '/wasm/',
+};
+
 
 function CV() {
+  const [numPages, setNumPages] = useState<number>(2);
+  const [pageNumber, setPageNumber] = useState<number>(1);
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+    setNumPages(numPages);
+  }
 
   return (
-    <div className="container">
-      <div className="about-section">
-        <div className="image-wrapper">
-          <img src={profile_pic} alt="Avatar" />
-        </div>
-        <div className="content">
-          <div className="social_icons">
-            <a href="https://github.com/sofiakwok" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-            <a href="https://www.linkedin.com/in/sofiakwok/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
-          </div>
-          <h1>Sofia Kwok</h1>
-          <div className="mobile_social_icons">
-            <a href="https://github.com/sofiakwok" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-            <a href="https://www.linkedin.com/in/sofiakwok/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
-          </div>
-        </div>
-      </div>
+    <div>
+      <Document file="../assets/images/CV_Kwok_Sofia.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+        <Page pageNumber={pageNumber} />
+      </Document>
+      <p>
+        Page {pageNumber} of {numPages}
+      </p>
     </div>
   );
 }
